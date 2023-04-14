@@ -20,23 +20,29 @@ public class MotorCarreteras : MonoBehaviour
 
     public float tamanoCalle;
 
+    public Vector3 medidaLimitePantalla;
+    public bool salioPantalla;
+
+    public GameObject mCamGo;
+    public Camera mCamComp;
+
     void Start()
     {
-        contenedorCallesGO = GameObject.Find("ContenedorCalles");
+        //contenedorCallesGO = GameObject.Find("ContenedorCalles");
         InicioJuego();
-        BuscoCalle();
+        
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (inicioJuego == true && juegoTerminado == false)
-            transform.Translate(Vector3.down * velocidad * Time.deltaTime);
-    }
 
     void InicioJuego()
     {
+        contenedorCallesGO = GameObject.Find("ContenedorCalles");
+        mCamGo = GameObject.Find("MainCamera");
+        mCamComp = mCamGo.GetComponent<Camera>();
         VelocidadMotoCarretera();
+        MedirPantalla();
+        BuscoCalles();
     }
 
     void VelocidadMotoCarretera()
@@ -44,7 +50,7 @@ public class MotorCarreteras : MonoBehaviour
         velocidad = 10;
     }
 
-    void BuscoCalle()
+    void BuscoCalles()
     {
 
         contenedorCallesArray = GameObject.FindGameObjectsWithTag("Calle");
@@ -74,16 +80,43 @@ public class MotorCarreteras : MonoBehaviour
         calleNueva = GameObject.Find("Calle" + contadorCalles);
         MidoCalles();
         calleNueva.transform.position = new Vector3(calleAnterior.transform.position.x, calleAnterior.transform.position.y + tamanoCalle, 0);
+        salioPantalla = false;
     }
 
     void MidoCalles()
     {
         for (int i = 0; i < calleAnterior.transform.childCount; i++)
         {
-            if (calleAnterior.transform.GetChild(i).gameObject.GetComponent<Piezza>() != null)
+            if (calleAnterior.transform.GetChild(i).gameObject.GetComponent<Pieza>() != null)
             {
                 float tamanoPieza = calleAnterior.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().bounds.size.y; tamanoCalle = tamanoCalle + tamanoPieza;
             }
         }
     }
+
+    void MedirPantalla()
+    {
+        medidaLimitePantalla = new Vector3(0, mCamComp.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 0.5f, 0);
+    }
+    void Update()
+    {
+        if (inicioJuego == true && juegoTerminado == false)
+            transform.Translate(Vector3.down * velocidad * Time.deltaTime);
+        if (calleAnterior.transform.position.y + tamanoCalle < medidaLimitePantalla.y && salioPantalla == false)
+        {
+            salioPantalla = true;
+            DestruyoCalles();
+
+        }
+    }
+
+    void DestruyoCalles()
+    {
+
+        Destroy(calleAnterior);
+        tamanoCalle = 0;
+        calleAnterior = null;
+        CrearCalles();
+    }
+
 }

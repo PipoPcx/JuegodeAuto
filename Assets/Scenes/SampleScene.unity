@@ -970,8 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f39fa5fff9ba4d8d61f60afc375db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 475200004}
-  button: {fileID: 475200001}
+  animator: {fileID: 0}
 --- !u!95 &176564016
 Animator:
   serializedVersion: 5
@@ -1598,7 +1597,6 @@ GameObject:
   - component: {fileID: 475200003}
   - component: {fileID: 475200002}
   - component: {fileID: 475200001}
-  - component: {fileID: 475200004}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1721,27 +1719,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475199999}
   m_CullTransparentMesh: 1
---- !u!95 &475200004
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475199999}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9e426fd71861733448ce8c5de4986a28, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &641502346
 GameObject:
   m_ObjectHideFlags: 0

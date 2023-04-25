@@ -7,7 +7,7 @@ public class ButtonAnimation : MonoBehaviour
     void Start()
     {
         // Obtener una referencia al componente Animator de tu objeto
-        animator = GetComponent<Animator>();
+        //animator<Animator>();
     }
 
     public void OnButtonClick()

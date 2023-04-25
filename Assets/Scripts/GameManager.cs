@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -25,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       UpdateGas();
+       showGas();
     }
 
     public void UpdateVelocity() {
@@ -50,19 +53,29 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void UpdateGas(float cantidad) {
+    public void resGas(float cantidad) {
         gasInicial -= cantidad;
     }
 
-    void UpdateGas() {
-        gasInicial -= Time.deltaTime * 3f;
+    public void sumGas(float cantidad) {
+        gasInicial += cantidad;
+        
+    }
+
+    void showGas() {
+        gasInicial -= Time.deltaTime * 1f;
         gas.text = "Gas: " + gasInicial.ToString();
+        gasInicial = Mathf.Clamp(gasInicial, 0f, 100f);
 
         if (gasInicial >= 30) { 
             gas.color = Color.green;
         }
         else { 
             gas.color= Color.red;
+        }
+        
+        if(gasInicial <= 0) {
+            SceneManager.LoadScene("Test");
         }
     }
 }

@@ -21,25 +21,27 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        float v = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(0, 0, v);
+        float h = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+       // float v = Input.GetAxis("vertical") * speed * Time.deltaTime;
+        velocity = Mathf.Clamp(velocity, 20f, 100f);
+        transform.Translate(0, 0, h);
+        
+        gameManager.UpdateVelocity();
 
         if (Input.GetKeyDown("space") && velocity>30f) {
             rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
-            gameManager.UpdateGas(20);
+            gameManager.resGas(20);
         }
 
         if (Input.GetKey("w")) {
 
             velocity += Time.deltaTime * 5f;
-            gameManager.UpdateGas(5f * Time.deltaTime);
+            gameManager.resGas(5f * Time.deltaTime);
         }
         else {
             velocity -= Time.deltaTime * 5f;
         }
 
-        velocity = Mathf.Clamp(velocity, 20f, 100f);
-        gameManager.UpdateVelocity();
     }
 
 

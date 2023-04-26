@@ -3,6 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private FixedJoystick joystick;
+    public float maxHeight = 5f;
+    public float minHeight = 0f;
+    
 
     private void Start()
     {
@@ -15,7 +18,24 @@ public class PlayerController : MonoBehaviour
         float horizontal = joystick.Horizontal;
         float vertical = joystick.Vertical;
 
-        // Hacer algo con la entrada del joystick, como mover al personaje
-        transform.position += new Vector3(horizontal, 0f, vertical) * Time.deltaTime;
+        // Limitar el movimiento vertical del personaje
+        float newY = Mathf.Clamp(transform.position.y + vertical * Time.deltaTime, minHeight, maxHeight);
+
+        if (vertical < 0)
+
+        {
+            MotorCarreteras.instance.velocidad = 10;
+
+        }
+        if (vertical > 0)
+
+        {
+            MotorCarreteras.instance.velocidad = 20;
+
+        }
+
+
+        // Mover al personaje
+        transform.position = new Vector3(transform.position.x + horizontal * Time.deltaTime, newY, transform.position.z);
     }
 }

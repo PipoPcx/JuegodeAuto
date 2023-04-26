@@ -16,7 +16,7 @@ public class ButtonAnimation : MonoBehaviour
 
         // Activar la animación
         animator.SetTrigger("SaltoAuto");
-        animator.SetBool("Idle", false);
+       
     }
 }
 

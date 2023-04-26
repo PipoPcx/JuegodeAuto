@@ -26,6 +26,8 @@ public class MotorCarreteras : MonoBehaviour
     public GameObject mCamGo;
     public Camera mCamComp;
 
+    public static MotorCarreteras instance;
+
     void Start()
     {
         //contenedorCallesGO = GameObject.Find("ContenedorCalles");
@@ -117,6 +119,11 @@ public class MotorCarreteras : MonoBehaviour
         tamanoCalle = 0;
         calleAnterior = null;
         CrearCalles();
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 
 }

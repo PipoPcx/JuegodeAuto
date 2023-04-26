@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeight: 2
-  minHeight: 0.5
+  minHeight: -0.5
 --- !u!114 &72593239
 MonoBehaviour:
   m_ObjectHideFlags: 0

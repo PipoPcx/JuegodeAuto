@@ -15,6 +15,10 @@ public class CuentaAtras : MonoBehaviour
     public GameObject controladorPlayerGO;
     public GameObject playerGO;
 
+    public GameObject enemigos;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +67,8 @@ public class CuentaAtras : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         contadorNumerosGO.SetActive(false);
+
+        enemigos.SetActive(true);
     }
 
     // Update is called once per frame

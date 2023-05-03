@@ -25,7 +25,7 @@ public class Cronometro : MonoBehaviour
         motorCarreterasGO = GameObject.Find("MotorCarreteras");
         motorCarreteraScript = motorCarreterasGO.GetComponent<MotorCarreteras>();
 
-        txtRiempo.text = "11";
+        txtRiempo.text = "00:00";
         txtDistancia.text = "0";
         gas.text = ("0.0");
 

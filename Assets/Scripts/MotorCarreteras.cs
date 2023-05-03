@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class MotorCarreteras : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class MotorCarreteras : MonoBehaviour
     public AudioFX audioFXScript;
     public GameObject bgFinalGO;
 
+    
+
 
 
     void Start()
@@ -54,10 +57,10 @@ public class MotorCarreteras : MonoBehaviour
         bgFinalGO = GameObject.Find("PanelGamerOver");
         bgFinalGO.SetActive(false);
 
-        audioFXGO = GameObject.Find("AudioFX");
-        audioFXScript = audioFXGO.GetComponent<AudioFX>();
+        //audioFXGO = GameObject.Find("AudioFX");
+        //audioFXScript = audioFXGO.GetComponent<AudioFX>();
 
-        playerGO = GameObject.FindObjectOfType<Player>().gameObject;
+       // playerGO = GameObject.FindObjectOfType<Player>().gameObject;
 
 
         VelocidadMotoCarretera();
@@ -70,6 +73,8 @@ public class MotorCarreteras : MonoBehaviour
         playerGO.GetComponent<AudioSource>().Stop();
         audioFXScript.FXMusic();
         bgFinalGO.SetActive(false );
+        SceneManager.LoadScene("Anuncio");
+
 
     }
 

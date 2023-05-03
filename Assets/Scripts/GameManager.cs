@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI mph;
     [SerializeField] private Player player;
-    [SerializeField] private TextMeshProUGUI jump;
+    [SerializeField] private Button jump;
     [SerializeField] private TextMeshProUGUI gas;
    // [SerializeField] private TextMeshProUGUI showGas;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     
 
     private void Awake() {
-        jump.color = Color.red;
+        //Button. = Color.red;
         gasInicial = 100;
        // showGas.color = Color.green;
     }
@@ -37,10 +37,10 @@ public class GameManager : MonoBehaviour
         mph.text = "Mph/" + newVelocityInt.ToString();
 
         if (newVelocityInt >= 30 ) {
-            jump.color = Color.green;
+            //jump.color = Color.green;
         }
         else { 
-            jump.color = Color.red;
+           //jump.color = Color.red;
         }
 
        // if (newVelocity >= 30f) {

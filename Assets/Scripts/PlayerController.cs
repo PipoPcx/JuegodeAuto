@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     private FixedJoystick joystick;
     public float maxHeight = 5f;
     public float minHeight = 0f;
+    public float velocidadHorizontal = 5f;
 
 
     private void Start()
@@ -38,6 +39,6 @@ public class PlayerController : MonoBehaviour
         float newY = Mathf.Clamp(transform.position.y + vertical * Time.deltaTime, minHeight, maxHeight);
 
         // Mover al personaje
-        transform.position = new Vector3(transform.position.x + horizontal * Time.deltaTime, newY, transform.position.z);
+        transform.position = new Vector3(transform.position.x + horizontal * velocidadHorizontal * Time.deltaTime, newY, transform.position.z);
     }
 }

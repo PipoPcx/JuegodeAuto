@@ -12,15 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mph;
     [SerializeField] private Player player;
     [SerializeField] private Button jump;
-    
-   // [SerializeField] private TextMeshProUGUI showGas;
+  
 
-    
-   
+    // [SerializeField] private TextMeshProUGUI showGas;
 
-    
 
    
+
 
     private void Update()
     {

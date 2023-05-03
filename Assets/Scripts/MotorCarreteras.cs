@@ -103,13 +103,19 @@ public class MotorCarreteras : MonoBehaviour
     void Update()
     {
         if (inicioJuego == true && juegoTerminado == false)
-            transform.Translate(Vector3.down * velocidad * Time.deltaTime);
-        if (calleAnterior.transform.position.y + tamanoCalle < medidaLimitePantalla.y && salioPantalla == false)
         {
-            salioPantalla = true;
-            DestruyoCalles();
+            transform.Translate(Vector3.down * velocidad * Time.deltaTime);
+            if (calleAnterior.transform.position.y + tamanoCalle < medidaLimitePantalla.y && salioPantalla == false)
+            {
+                salioPantalla = true;
+                DestruyoCalles();
 
+            }
         }
+           
+
+
+      
     }
 
     void DestruyoCalles()

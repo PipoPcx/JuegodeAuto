@@ -3,10 +3,10 @@ using UnityEngine;
 public class RandomMovement : MonoBehaviour
 {
     // Definimos los límites de movimiento en X e Y
-    public float xMin = -10f;
-    public float xMax = 10f;
-    public float yMin = -5f;
-    public float yMax = 5f;
+    public float xMin;
+    public float xMax;
+    public float yMin;
+    public float yMax;
 
     // Velocidad del movimiento
     public float speed = 5f;
@@ -17,7 +17,7 @@ public class RandomMovement : MonoBehaviour
     void Start()
     {
         // Elegimos una dirección de movimiento aleatoria al iniciar
-        direction = new Vector2(Random.Range(-10f, 10f), Random.Range(-2f, 2f));
+        direction = new Vector2(Random.Range(-5f, 5f), Random.Range(-1f, 1f));
     }
 
     void Update()

@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
     }
 
     void showGas() {
-        gasInicial -= Time.deltaTime * 1f;
-        gas.text = "Gas: " + gasInicial.ToString();
+        gasInicial -= Time.deltaTime * 1;
+        gas.text = " " + gasInicial.ToString("0.0");
         gasInicial = Mathf.Clamp(gasInicial, 0f, 100f);
 
         if (gasInicial >= 30) { 

@@ -28,9 +28,16 @@ public class MotorCarreteras : MonoBehaviour
 
     public static MotorCarreteras instance;
 
+    public GameObject playerGO;
+    public GameObject audioFXGO;
+    public AudioFX audioFXScript;
+    public GameObject bgFinalGO;
+
+
+
     void Start()
     {
-        //contenedorCallesGO = GameObject.Find("ContenedorCalles");
+       // contenedorCallesGO = GameObject.Find("ContenedorCalles");
         InicioJuego();
         
     }
@@ -40,11 +47,30 @@ public class MotorCarreteras : MonoBehaviour
     void InicioJuego()
     {
         contenedorCallesGO = GameObject.Find("ContenedorCalles");
+
         mCamGo = GameObject.Find("MainCamera");
         mCamComp = mCamGo.GetComponent<Camera>();
+
+        bgFinalGO = GameObject.Find("PanelGamerOver");
+        bgFinalGO.SetActive(false);
+
+        audioFXGO = GameObject.Find("AudioFX");
+        audioFXScript = audioFXGO.GetComponent<AudioFX>();
+
+        playerGO = GameObject.FindObjectOfType<Player>().gameObject;
+
+
         VelocidadMotoCarretera();
         MedirPantalla();
         BuscoCalles();
+    }
+
+    public void JuegoTerminadoEstados()
+    {
+        playerGO.GetComponent<AudioSource>().Stop();
+        audioFXScript.FXMusic();
+        bgFinalGO.SetActive(false );
+
     }
 
     void VelocidadMotoCarretera()
@@ -52,7 +78,7 @@ public class MotorCarreteras : MonoBehaviour
         velocidad = 10;
     }
 
-    void BuscoCalles()
+    void BuscoCalles()                                                                                                                                        
     {
 
         contenedorCallesArray = GameObject.FindGameObjectsWithTag("Calle");
@@ -105,12 +131,14 @@ public class MotorCarreteras : MonoBehaviour
         if (inicioJuego == true && juegoTerminado == false)
         {
             transform.Translate(Vector3.down * velocidad * Time.deltaTime);
+
             if (calleAnterior.transform.position.y + tamanoCalle < medidaLimitePantalla.y && salioPantalla == false)
             {
                 salioPantalla = true;
                 DestruyoCalles();
 
             }
+
         }
            
 

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     public float velocity;
 
+    public Cronometro cronometro;
+
 
     private void Awake()
     {
@@ -30,13 +32,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown("space") && velocity>30f) {
             rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
-            gameManager.resGas(20);
+            cronometro.resGas(20);
         }
 
         if (Input.GetKey("w")) {
 
             velocity += Time.deltaTime * 5f;
-            gameManager.resGas(5f * Time.deltaTime);
+            cronometro.resGas(5f * Time.deltaTime);
         }
         else {
             velocity -= Time.deltaTime * 5f;

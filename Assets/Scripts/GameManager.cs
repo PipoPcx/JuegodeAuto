@@ -12,23 +12,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mph;
     [SerializeField] private Player player;
     [SerializeField] private Button jump;
-    [SerializeField] private TextMeshProUGUI gas;
+    
    // [SerializeField] private TextMeshProUGUI showGas;
 
-    private float gasInicial;
+    
    
 
     
 
-    private void Awake() {
-        //Button. = Color.red;
-        gasInicial = 100;
-       // showGas.color = Color.green;
-    }
+   
 
     private void Update()
     {
-       showGas();
+       
     }
 
     public void UpdateVelocity() {
@@ -53,29 +49,5 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void resGas(float cantidad) {
-        gasInicial -= cantidad;
-    }
-
-    public void sumGas(float cantidad) {
-        gasInicial += cantidad;
-        
-    }
-
-    void showGas() {
-        gasInicial -= Time.deltaTime * 1;
-        gas.text = " " + gasInicial.ToString("0.0");
-        gasInicial = Mathf.Clamp(gasInicial, 0f, 100f);
-
-        if (gasInicial >= 30) { 
-            gas.color = Color.green;
-        }
-        else { 
-            gas.color= Color.red;
-        }
-        
-        if(gasInicial <= 0) {
-            SceneManager.LoadScene("Test");
-        }
-    }
+  
 }

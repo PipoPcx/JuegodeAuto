@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class GasCan : MonoBehaviour
 {
-   private GameManager gameManager;
+    private Cronometro cronometro;
 
-    private void Awake() {
-        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+    private void Awake()
+    {
+        cronometro = GameObject.FindAnyObjectByType<Cronometro>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) {
-            gameManager.sumGas(30f);
+        if (other.CompareTag("Player"))
+        {
+            cronometro.sumGas(30f);
             Destroy(gameObject);
 
         }
